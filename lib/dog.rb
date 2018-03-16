@@ -29,7 +29,7 @@ class Dog
   def save
     sql = "INSERT INTO dogs (name, breed) VALUES (?, ?);"
 
-    new_dog DB[:conn].execute(sql, self.name, self.breed)
-    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
+    new_dog =  DB[:conn].execute(sql, self.name, self.breed)
+    new_dog.id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
   end
 end
